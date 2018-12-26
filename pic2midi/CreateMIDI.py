@@ -21,7 +21,8 @@ def CreateMIDI(im, CmdLine):
     duration = 1 #each note 1 beat
 
     for i in range( imArray.shape[0] ):
-        for j,velocity in enumerate( imArray[i] ):
+        for j,pixel in enumerate( imArray[i] ):
+            velocity = pixel >> 1
             pitch = note0 - i
             time = j
 
