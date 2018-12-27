@@ -21,7 +21,8 @@ CmdLine = {'tempo':120, #tempo
            'Vel':True,  #constant velocity?
            'VelThreshold':20, #threshold2
            'inName':sys.argv[-1], #image name
-           'outName':'a.midi'} #midi name
+           'outName':'a.midi',#midi name
+           'Stitching':True} #enable stitching?
 CmdLine = SetCommandLine(sys.argv,CmdLine)
 
 #Processing the image

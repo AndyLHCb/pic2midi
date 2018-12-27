@@ -8,7 +8,7 @@ def StitchNotes(im, CmdLine):
     notes = np.array([])
     
     #contstant velocity
-    if CmdLine['Vel']:
+    if CmdLine['Vel'] and CmdLine['Stitching']:
         for i in range(imArray.shape[0]):
             for j,val in enumerate(imArray[i]):
                 

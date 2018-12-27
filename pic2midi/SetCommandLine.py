@@ -30,6 +30,10 @@ def SetCommandLine(argv,commands):
         if arg == '-v': #Constant velocity?
             vel = False if argv[i+1] == 'False' else True
             retCmds['Vel'] = vel
+         
+        if arg == '-s': #Stitching Enabled?
+            stitch = False if argv[i+1] == 'False' else True
+            retCmds['Stitching'] = stitch
 
         if arg == '-vt': #threshold 2
             BWth = int(argv[i+1])
@@ -64,6 +68,7 @@ def printHelp():
                             b'-th Set the threshold for the image brightness (default 40)\n'+
                             b'-v  Set whether the output will have constant Velocity (True/False)\n'+
                             b'-vt Set the threshold for a hit note if the Velocity is Constant (default 20)\n'+
+                            b'-s  Set whether stitching will be enabled/disabled (True/False)\n'+
                             b"- The final argument must be the filename of the input image unless it's given with -i\n"+
                             b'\n'+
                             b"If the big picture shown doesn't look right, play with '-th'\n"+
