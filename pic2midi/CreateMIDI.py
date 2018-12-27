@@ -1,13 +1,12 @@
 from PIL import Image
 from midiutil.MidiFile import MIDIFile
+from pic2midi.StitchNotes import note
 import numpy as np
 
-def CreateMIDI(im, CmdLine):
-
-    imArray = np.array(im)
+def CreateMIDI(notes, CmdLine):
     
     #highest note = note0
-    note0 = 60 + round(CmdLine['range']/2) #60 = middle c
+    note0 = 64 + round(CmdLine['range']/2) #60 = middle C, 64 = E
     
     #WRITE MIDIFILE
     mf = MIDIFile(1) # 1 track
@@ -20,13 +19,10 @@ def CreateMIDI(im, CmdLine):
     channel = 0
     duration = 1 #each note 1 beat
 
-    for i in range( imArray.shape[0] ):
-        for j,pixel in enumerate( imArray[i] ):
-            velocity = pixel >> 1
-            pitch = note0 - i
-            time = j
+    for n in notes:
+            truePitch = note0 - n.pitch
 
-            mf.addNote(track, channel, pitch, time, duration, velocity)
+            mf.addNote(track, channel, truePitch, n.time, n.length, n.velocity)
 
     return mf
 
