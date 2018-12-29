@@ -43,9 +43,10 @@ def ImageProcessing(im, commands):
     imArray = np.array(im)
     ratio = 255./np.amax(imArray)
 
-    for i in range(imArray.shape[0]):
-        for j,val in enumerate(imArray[i]):
-            imArray[i,j] = round(val*ratio)
+    if ratio != 1:
+        for i in range(imArray.shape[0]):
+            for j,val in enumerate(imArray[i]):
+                imArray[i,j] = round(val*ratio)
 
 
 

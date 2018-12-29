@@ -24,9 +24,7 @@ def StitchNotes(im, CmdLine):
                                 n.length += 1
                                 extensionTest = True       
                                 
-                    if extensionTest:
-                        continue
-                    else:
+                    if not extensionTest:
                         n = note(j , 1, val >> 1, i)
                         notes = np.append(notes, n)
     
